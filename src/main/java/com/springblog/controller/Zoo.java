@@ -1,4 +1,4 @@
-package com.springblog.component;
+package com.springblog.controller;
 
 import com.springblog.domain.Animal;
 import org.springframework.beans.factory.annotation.Autowired;

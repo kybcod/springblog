@@ -1,5 +1,8 @@
 package com.springblog.controller.calculate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RecursiveCalculator implements Calculator{
     @Override
     public long factorial(long num) {

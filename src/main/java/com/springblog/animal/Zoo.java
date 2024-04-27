@@ -1,6 +1,5 @@
-package com.springblog.controller;
+package com.springblog.animal;
 
-import com.springblog.domain.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

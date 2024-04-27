@@ -1,4 +1,4 @@
-package com.springblog.controller.calculate;
+package com.springblog.calculate;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;

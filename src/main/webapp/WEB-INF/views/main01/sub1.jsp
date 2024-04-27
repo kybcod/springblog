@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>회원가입</h1>
-<form action="/main01/sub1">
+<form action="" method="post">
     <div>
         <input type="text" name="id" placeholder="아이디">
     </div>

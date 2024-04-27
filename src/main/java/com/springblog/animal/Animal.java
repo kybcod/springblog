@@ -1,4 +1,4 @@
-package com.springblog.domain;
+package com.springblog.animal;
 
 import org.springframework.stereotype.Component;
 

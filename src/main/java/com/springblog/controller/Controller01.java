@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("main01")
+@RequestMapping("main1")
 public class Controller01 {
     @GetMapping("sub1")
     public void sub1(){

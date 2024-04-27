@@ -1,4 +1,4 @@
-package com.springblog.controller.calculate;
+package com.springblog.calculate;
 
 import org.springframework.stereotype.Component;
 

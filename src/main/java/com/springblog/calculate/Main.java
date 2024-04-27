@@ -1,4 +1,4 @@
-package com.springblog.controller.calculate;
+package com.springblog.calculate;
 
 public class Main {
     public static void main(String[] args) {

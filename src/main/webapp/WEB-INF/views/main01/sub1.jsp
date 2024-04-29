@@ -16,7 +16,7 @@
     </div>
     <div>
         <input type="password" name="passwordCheck" placeholder="비밀번호 확인">
-        <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 일치합니다.'))">
+        <button>비밀번호 확인</button>
         <c:if test="${not empty message1}">
             ${message1}
         </c:if>

@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 <h1>회원가입</h1>
+<c:if test="${not empty message1}">
+    ${message1}
+</c:if>
 <form action="" method="post">
     <div>
         <input type="text" name="member_id" placeholder="아이디">
@@ -13,10 +17,22 @@
             <input type="password" name="password" placeholder="비밀번호">
     </div>
     <div>
-            <input type="password" name="passwordCheck" placeholder="비밀번호 확인">
-        </div>
+        <input type="password" name="passwordCheck" placeholder="비밀번호 확인">
+        <c:if test="${password == passwordCheck}">
+            <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 일치합니다.'))">
+        </c:if>
+        <c:if test="${password != passwordCheck}">
+            <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 다릅니다. 다시 확인'))">
+        </c:if>
     <div>
-            <input type="text" name="email" placeholder="이메일 주소">
+            <input type="text" name="email1" placeholder="이메일 주소"> @
+            <select name="email2">
+                <option value="naver.com">naver.com</option>
+                <option value="daum.net">daum.net</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="kakao.com">kakao.com</option>
+                <option value="hanmail.net">hanmail.net</option>
+            </select>
     </div>
     <div>
         <input type="text" name="birth" placeholder="생년월일 8자리">

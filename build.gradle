@@ -37,7 +37,7 @@ dependencies {
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
     implementation 'com.mysql:mysql-connector-j'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
-
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 tasks.named('test') {

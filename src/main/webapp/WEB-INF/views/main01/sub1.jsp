@@ -7,7 +7,7 @@
 <h1>회원가입</h1>
 <form action="" method="post">
     <div>
-        <input type="text" name="id" placeholder="아이디">
+        <input type="text" name="member_id" placeholder="아이디">
     </div>
     <div>
             <input type="password" name="password" placeholder="비밀번호">

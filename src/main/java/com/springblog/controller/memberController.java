@@ -34,6 +34,6 @@ public class memberController {
         else{
             rttr.addFlashAttribute("message","추가 안됨");
         }
-        return "redirect:/main1/sub1";
+        return "redirect:/main01/sub1";
     }
 }

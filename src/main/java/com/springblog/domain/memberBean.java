@@ -6,10 +6,10 @@ import java.util.Date;
 
 @Data
 public class memberBean {
-    private String id;
+    private String member_id;
     private String password;
     private String passwordCheck;
     private String email;
-    private Date birth;
+    private String birth;
     private Integer phone;
 }

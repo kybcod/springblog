@@ -6,9 +6,7 @@
 </head>
 <body>
 <h1>회원가입</h1>
-<c:if test="${not empty message1}">
-    ${message1}
-</c:if>
+
 <form action="" method="post">
     <div>
         <input type="text" name="member_id" placeholder="아이디">
@@ -18,12 +16,11 @@
     </div>
     <div>
         <input type="password" name="passwordCheck" placeholder="비밀번호 확인">
-        <c:if test="${password == passwordCheck}">
-            <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 일치합니다.'))">
+        <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 일치합니다.'))">
+        <c:if test="${not empty message1}">
+            ${message1}
         </c:if>
-        <c:if test="${password != passwordCheck}">
-            <input type="button" name="btnPwd" value="비밀번호 확인" onsubmit="return(confirm('비밀번호가 다릅니다. 다시 확인'))">
-        </c:if>
+
     <div>
             <input type="text" name="email1" placeholder="이메일 주소"> @
             <select name="email2">

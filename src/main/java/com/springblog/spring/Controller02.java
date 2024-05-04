@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("main01")
 @RequiredArgsConstructor
-public class memberController {
+public class Controller02 {
 
     private final mapper01 mapper;
 

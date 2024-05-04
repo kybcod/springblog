@@ -1,6 +1,6 @@
-package com.springblog.calculate;
+package com.springblog.spring.calculate;
 
-public class ExecutionTimeCalculator implements Calculator{
+public class ExecutionTimeCalculator implements Calculator {
 
     // 구현체의 의존성을 주입받을 필드
     private final Calculator delegate;

@@ -1,12 +1,9 @@
-package com.springblog.mapper;
+package com.springblog.spring;
 
-import com.springblog.domain.memberBean;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.Date;
 import java.util.List;
 
 @Mapper

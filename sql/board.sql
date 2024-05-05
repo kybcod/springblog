@@ -1,5 +1,6 @@
 CREATE DATABASE blog;
 
+
 USE blog;
 CREATE TABLE member
 (

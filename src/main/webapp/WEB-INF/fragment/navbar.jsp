@@ -20,10 +20,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/member/list">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/board/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/member/list">Member List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/member/join">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/insert">Board Insert</a>
                 </li>
             </ul>
         </div>

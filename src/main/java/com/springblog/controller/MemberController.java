@@ -41,11 +41,12 @@ public class MemberController {
     @GetMapping("modify")
     public String updateForm(Integer id, Model model) {
         model.addAttribute("member", service.get(id));
-        return "member/info";
+        return "member/modify";
     }
 
     @PostMapping("modify")
     public String updatePost(Member member, RedirectAttributes rttr) {
+        System.out.println("member = " + member);
         service.update(member);
         rttr.addAttribute("id", member.getId());
         return "redirect:/member";

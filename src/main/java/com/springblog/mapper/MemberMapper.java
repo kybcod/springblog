@@ -4,6 +4,7 @@ import com.springblog.domain.Member;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -26,4 +27,11 @@ public interface MemberMapper {
             SELECT * FROM member WHERE id = #{id}
             """)
     Member selectById(Integer id);
+
+    @Update("""
+            UPDATE member
+            SET password = #{password}, nick_name=#{nickName}
+            WHERE id = #{id};
+            """)
+    int update(Member member);
 }

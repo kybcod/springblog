@@ -25,4 +25,8 @@ public class MemberService {
     public Member get(Integer id) {
         return mapper.selectById(id);
     }
+
+    public void update(Member member) {
+        mapper.update(member);
+    }
 }

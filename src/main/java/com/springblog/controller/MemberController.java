@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -46,9 +47,14 @@ public class MemberController {
 
     @PostMapping("modify")
     public String updatePost(Member member, RedirectAttributes rttr) {
-        System.out.println("member = " + member);
         service.update(member);
         rttr.addAttribute("id", member.getId());
         return "redirect:/member";
+    }
+
+    @PostMapping("delete")
+    public String delete(Integer id) {
+        service.delete(id);
+        return "redirect:/member/list";
     }
 }

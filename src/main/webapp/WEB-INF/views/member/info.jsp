@@ -61,7 +61,7 @@
 <%--div.d-none>form>input:h[name=id]--%>
 
 <div class="d-none" onsubmit="return confirm('탈퇴 하시겠습니까?')">
-    <form action="/member/remove" id="formDelete" method="post">
+    <form action="/member/delete" id="formDelete" method="post">
         <input type="hidden" name="id" value="${member.id}">
     </form>
 </div>

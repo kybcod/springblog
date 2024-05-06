@@ -3,6 +3,7 @@ package com.springblog.service;
 import com.springblog.domain.Member;
 import com.springblog.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberMapper mapper;
+    private final BCryptPasswordEncoder encoder;
 
     public void join(Member member) {
+        member.setPassword(encoder.encode(member.getPassword()));
         mapper.insert(member);
     }
 

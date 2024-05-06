@@ -26,7 +26,7 @@
 <div class="container" >
     <div class="row justify-content-center">
         <div class="col-4">
-            <form action="/board/update" method="post">
+            <form action="/update" method="post">
                 <input type="hidden" name="id" value="${board.id}">
                 <div class="mb-3">
                     <label for="InputTitle" class="form-label">제목</label>

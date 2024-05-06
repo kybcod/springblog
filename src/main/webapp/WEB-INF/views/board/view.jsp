@@ -44,11 +44,11 @@
                     <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}" readonly>
                 </div>
                 <div class="mb-3">
-                    <form action="/board/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?')">
+                    <form action="/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?')">
                         <input type="hidden" name="id" value="${board.id}">
                         <button class="btn btn-primary">게시글 삭제</button>
                     </form>
-                    <a href="/board/update" class="btn btn-secondary">게시글 수정</a>
+                    <a href="/update?id=${board.id}" class="btn btn-secondary">게시글 수정</a>
                 </div>
         </div>
     </div>

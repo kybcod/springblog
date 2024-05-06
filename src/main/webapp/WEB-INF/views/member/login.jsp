@@ -23,29 +23,28 @@
 
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
 
-<div class="container" >
+<div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
-        <div class="col-4">
-            <form action="/insert" method="post">
+        <div class="col-12 col-xl-5">
+            <h3 class="mb-4">로그인</h3>
+            <form action="/member/login" method="post">
                 <div class="mb-3">
-                    <label for="InputTitle" class="form-label">제목</label>
-                    <input id="InputTitle" type="text" class="form-control" name="title">
+                    <label for="InputEmail" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="InputEmail" name="username" >
                 </div>
                 <div class="mb-3">
-                    <label for="InputContent" class="form-label">본문</label>
-                    <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10"></textarea>
+                    <label for="InputPassword" class="form-label">비밀번호</label>
+                    <input type="password" class="form-control" id="InputPassword" name="password" >
                 </div>
                 <div class="mb-3">
-                    <label for="InputWriter" class="form-label">작성자</label>
-                    <input id="InputWriter" type="text" class="form-control" name="writer">
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary">게시글 추가</button>
+                    <button class="btn btn-primary">로그인</button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="

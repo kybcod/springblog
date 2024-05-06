@@ -57,4 +57,9 @@ public class MemberController {
         service.delete(id);
         return "redirect:/member/list";
     }
+
+    @GetMapping("login")
+    public String login(){
+        return "member/login";
+    }
 }

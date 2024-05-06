@@ -1,6 +1,5 @@
 CREATE DATABASE blog;
 
-
 USE blog;
 CREATE TABLE member
 (
@@ -25,3 +24,10 @@ CREATE TABLE board
 
 SELECT *
 FROM board;
+
+ALTER TABLE board
+    ADD COLUMN member_id INT REFERENCES member (id);
+
+UPDATE board
+SET member_id = 8
+WHERE id > 0;

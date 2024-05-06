@@ -1,4 +1,4 @@
-package com.springblog.controller;
+package com.springblog.spring;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("main1")
 public class Controller01 {
     @GetMapping("sub1")
-    public void sub1(){
+    public void sub1() {
         System.out.println("Controller01.sub1");
     }
 }

@@ -1,8 +1,6 @@
-package com.springblog.domain;
+package com.springblog.spring;
 
 import lombok.Data;
-
-import java.util.Date;
 
 @Data
 public class memberBean {

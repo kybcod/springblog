@@ -1,4 +1,4 @@
-package com.springblog.calculate;
+package com.springblog.spring.calculate;
 
 
 public interface Calculator {

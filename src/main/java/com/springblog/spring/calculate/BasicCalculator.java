@@ -1,9 +1,9 @@
-package com.springblog.calculate;
+package com.springblog.spring.calculate;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class BasicCalculator implements Calculator{
+public class BasicCalculator implements Calculator {
     @Override
     public long factorial(long num) {
         long result = 1;

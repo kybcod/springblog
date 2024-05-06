@@ -31,3 +31,6 @@ ALTER TABLE board
 UPDATE board
 SET member_id = 8
 WHERE id > 0;
+
+ALTER TABLE board
+    DROP COLUMN writer;

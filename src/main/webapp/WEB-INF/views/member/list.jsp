@@ -25,7 +25,7 @@
 
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
-        <div class="col-12 col-xl-5">
+        <div class="col-6">
             <h3 class="mb-4">회원 목록</h3>
             <table class="table">
                 <thead>

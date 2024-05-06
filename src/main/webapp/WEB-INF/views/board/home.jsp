@@ -37,12 +37,12 @@
           </tr>
           </thead>
           <tbody class="table-group-divider">
-          <c:forEach var="board" items="${list}">
-            <c:url var="link" value="/board/view">
+          <c:forEach var="board" items="${list}" varStatus="status">
+            <c:url var="link" value="board/view">
               <c:param name="id" value="${board.id}"/>
             </c:url>
             <tr>
-              <td>${board.id}</td>
+              <td>${fn:length(list) - status.index}</td>
               <td><a href="${link}">${board.title}</a></td>
               <td>${board.content}</td>
               <td>${board.writer}</td>

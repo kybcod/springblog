@@ -36,10 +36,6 @@
                     <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="InputWriter" class="form-label">작성자</label>
-                    <input id="InputWriter" type="text" class="form-control" name="writer">
-                </div>
-                <div class="mb-3">
                     <button class="btn btn-primary">게시글 추가</button>
                 </div>
             </form>

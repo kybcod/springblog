@@ -3,6 +3,7 @@ package com.springblog.controller;
 import com.springblog.domain.Member;
 import com.springblog.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,9 +54,11 @@ public class MemberController {
     }
 
     @PostMapping("delete")
-    public String delete(Integer id) {
-        service.delete(id);
-        return "redirect:/member/list";
+    public String delete(Integer id, Authentication authentication) {
+        if (service.hasAccess(id, authentication)) {
+            service.delete(id);
+        }
+        return "redirect:/logout";
     }
 
     @GetMapping("login")

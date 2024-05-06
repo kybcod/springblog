@@ -3,6 +3,7 @@ package com.springblog.controller;
 import com.springblog.domain.Board;
 import com.springblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,8 @@ public class BoardController {
     }
 
     @PostMapping("/insert")
-    public String insertPost(Board board){
-        service.insert(board);
+    public String insertPost(Board board, Authentication authentication){
+        service.insert(board, authentication);
         return "redirect:/";
     }
 
@@ -39,7 +40,7 @@ public class BoardController {
     }
 
     // 해당 아이디 게시글 조회
-    @GetMapping("/board")
+    @GetMapping("/board/view")
     public String view(Integer id, Model model){
         model.addAttribute("board", service.get(id));
         return "board/view";
@@ -55,16 +56,20 @@ public class BoardController {
 
     // 게시글 수정 후 수정된 내용 저장
     @PostMapping("/update")
-    public String updatePost(RedirectAttributes rttr, Board board){
-        service.update(board);
+    public String updatePost(RedirectAttributes rttr, Board board, Authentication authentication){
+        if(service.hasAccess(board.getId(), authentication)){
+            service.update(board);
+        }
         rttr.addAttribute("id", board.getId());
-        return "redirect:/board";
+        return "redirect:/board/view";
     }
 
     // 게시글 삭제
     @PostMapping("/delete")
-    public String delete(Integer id){
-        service.delete(id);
+    public String delete(Integer id, Authentication authentication){
+        if (service.hasAccess(id, authentication)){
+            service.delete(id);
+        }
         return "redirect:/";
     }
 

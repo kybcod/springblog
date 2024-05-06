@@ -9,4 +9,5 @@ public class Board {
     private String content;
     private String writer;
     private String inserted;
+    private Integer memberId;
 }

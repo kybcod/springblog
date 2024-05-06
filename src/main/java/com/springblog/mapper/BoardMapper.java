@@ -14,8 +14,8 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     @Insert("""
-    INSERT INTO board (title, content, writer)
-    VALUES (#{title}, #{content}, #{writer})
+    INSERT INTO board (title, content, member_id)
+    VALUES (#{title}, #{content}, #{memberId})
     """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Board board);
@@ -23,16 +23,19 @@ public interface BoardMapper {
     @Select("SELECT * FROM board ORDER BY id DESC")
     List<Board> selectAll();
 
-    @Select("SELECT * FROM board WHERE id = #{id}")
+    @Select("SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id FROM board b JOIN member m ON b.member_id = m.id WHERE b.id = #{id}")
     Board selectById(Integer id);
 
     @Update("""
             UPDATE board
-            SET title = #{title}, content = #{content}, writer = #{writer}
+            SET title = #{title}, content = #{content}
             WHERE id = #{id}
             """)
     int update(Board board);
 
     @Delete("DELETE FROM board WHERE id = #{id}")
     int delete(Integer id);
+
+    @Delete("DELETE FROM board WHERE member_id = #{id}")
+    int deleteByMemberId(Integer id);
 }

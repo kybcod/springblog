@@ -37,10 +37,6 @@
                     <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10" >${board.content}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="InputWriter" class="form-label">작성자</label>
-                    <input id="InputWriter" type="text" class="form-control" name="writer" value="${board.writer}" >
-                </div>
-                <div class="mb-3">
                     <label for="InputInserted" class="form-label">작성일</label>
                     <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}" disabled>
                 </div>

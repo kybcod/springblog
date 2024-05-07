@@ -86,7 +86,7 @@
                         </li>
                     </c:forEach>
 
-                    <c:if test="${pageInfo.nextPage < pageInfo.endPage}">
+                    <c:if test="${pageInfo.nextPage < pageInfo.lastPage}">
                         <c:url value="/" var="pageLink">
                             <c:param name="page" value="${pageInfo.nextPage}"/>
                         </c:url>

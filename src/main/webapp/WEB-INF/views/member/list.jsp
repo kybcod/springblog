@@ -84,7 +84,7 @@
                         </li>
                     </c:forEach>
 
-                    <c:if test="${memberInfo.nextPage < memberInfo.endPage}">
+                    <c:if test="${memberInfo.nextPage < memberInfo.lastPage}">
                         <li class="page-item">
                             <a class="page-link" href="list?page=${memberInfo.nextPage}">
                                 <span aria-hidden="true">&raquo;</span>

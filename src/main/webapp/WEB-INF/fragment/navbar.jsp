@@ -45,7 +45,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal.member" var="authMember"/>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/member/list?id=${authMember.id}">내 정보</a>
+                        <a class="nav-link active" aria-current="page" href="/member?id=${authMember.id}">내 정보</a>
                     </li>
                 </sec:authorize>
 

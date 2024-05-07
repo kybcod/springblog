@@ -27,7 +27,7 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-8">
-            <h3 class="mb-4">회원 정보 조회</h3>
+            <h3 class="mt-4 mb-4">${member.nickName}님</h3>
             <%--                div*3>label.form-label+input.form-control--%>
             <div class="mb-3">
                 <label for="emailInput" class="form-label">이메일</label>

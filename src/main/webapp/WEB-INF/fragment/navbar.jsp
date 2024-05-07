@@ -35,11 +35,11 @@
                 </li>
 
                 <sec:authorize access="isAuthenticated()">
-                    <sec:authorize access="hasAnyAuthority('admin')">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
-                        </li>
-                    </sec:authorize>
+                    <%--                    <sec:authorize access="hasAnyAuthority('admin')">--%>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
+                    </li>
+                    <%--                    </sec:authorize>--%>
                 </sec:authorize>
 
                 <sec:authorize access="isAuthenticated()">

@@ -50,6 +50,6 @@ public interface MemberMapper {
             """)
     List<Member> selectAllByPage(int offset);
 
-    @Select("SELECT name FROM authority WHERE member_id = #{member_id}")
-    List<String> selectAuthorityByMemberId(Integer memberId);
+//    @Select("SELECT name FROM authority WHERE member_id = #{member_id}")
+//    List<String> selectAuthorityByMemberId(Integer memberId);
 }

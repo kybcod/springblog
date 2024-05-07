@@ -25,6 +25,16 @@ CREATE TABLE board
 SELECT *
 FROM board;
 
+INSERT INTO board (title, content, member_id)
+VALUES ('ef', 'aafeef', 46);
+
+INSERT INTO board (title, content, member_id)
+VALUES ('22332', 'aafafefeef', 46);
+
+INSERT INTO board (title, content, member_id)
+VALUES ('23r3ef', 'aawr3feef', 46);
+
+
 ALTER TABLE board
     ADD COLUMN member_id INT REFERENCES member (id);
 

@@ -26,6 +26,7 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-4">
+            <h3 class="mt-4"></h3>
             <form action="/insert" method="post">
                 <div class="mb-3">
                     <label for="InputTitle" class="form-label">제목</label>

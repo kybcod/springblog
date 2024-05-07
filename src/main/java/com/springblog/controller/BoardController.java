@@ -39,7 +39,7 @@ public class BoardController {
 
     // 해당 아이디 게시글 조회
     @GetMapping("/board/view")
-    public String viewId(Integer id, Model model) {
+    public String viewId(@RequestParam(value = "id") Integer id, Model model) {
         model.addAttribute("board", service.get(id));
         return "board/view";
     }

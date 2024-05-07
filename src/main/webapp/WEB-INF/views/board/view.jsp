@@ -25,37 +25,40 @@
 
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
 
-<div class="container" >
+<div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-4">
-                <div class="mb-3">
-                    <label for="InputTitle" class="form-label">제목</label>
-                    <input id="InputTitle" type="text" class="form-control" name="title" value="${board.title}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="InputContent" class="form-label">본문</label>
-                    <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10" readonly>${board.content}</textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="InputWriter" class="form-label">작성자</label>
-                    <input id="InputWriter" type="text" class="form-control" name="writer" value="${board.writer}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="InputInserted" class="form-label">작성자</label>
-                    <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}" readonly>
-                </div>
-                <sec:authorize access="isAuthenticated()">
-                    <sec:authentication property="principal.member" var="member"/>
-                        <c:if test="${member.id eq board.memberId}">
-                            <div class="mb-3">
-                                <form action="/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?')">
-                                    <input type="hidden" name="id" value="${board.id}">
-                                    <button class="btn btn-primary">게시글 삭제</button>
-                                </form>
-                                <a href="/update?id=${board.id}" class="btn btn-secondary">게시글 수정</a>
-                            </div>
-                        </c:if>
-                </sec:authorize>
+            <h3 class="mt-4 mb-4"></h3>
+            <div class="mb-3">
+                <label for="InputTitle" class="form-label">제목</label>
+                <input id="InputTitle" type="text" class="form-control" name="title" value="${board.title}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="InputContent" class="form-label">본문</label>
+                <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10"
+                          readonly>${board.content}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="InputWriter" class="form-label">작성자</label>
+                <input id="InputWriter" type="text" class="form-control" name="writer" value="${board.writer}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="InputInserted" class="form-label">작성자</label>
+                <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}"
+                       readonly>
+            </div>
+            <sec:authorize access="isAuthenticated()">
+                <sec:authentication property="principal.member" var="member"/>
+                <c:if test="${member.id eq board.memberId}">
+                    <div class="mb-3">
+                        <form action="/delete" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?')">
+                            <input type="hidden" name="id" value="${board.id}">
+                            <button class="btn btn-primary">게시글 삭제</button>
+                        </form>
+                        <a href="/update?id=${board.id}" class="btn btn-secondary">게시글 수정</a>
+                    </div>
+                </c:if>
+            </sec:authorize>
         </div>
     </div>
 </div>

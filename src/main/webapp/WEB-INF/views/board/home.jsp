@@ -26,6 +26,7 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-4">
+            <h3 class="mb-4"></h3>
             <table class="table">
                 <thead>
                 <tr>
@@ -48,11 +49,8 @@
                 </c:forEach>
                 </tbody>
             </table>
-        </div>
-    </div>
 
-    <div class="row justify-content-center">
-        <div class="col-4">
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
 
@@ -113,6 +111,8 @@
             </nav>
         </div>
     </div>
+
+
 </div>
 
 

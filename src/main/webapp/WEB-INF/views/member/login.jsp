@@ -26,15 +26,15 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-12 col-xl-5">
-            <h3 class="mb-4">로그인</h3>
+            <h3 class="mt-4 mb-4">로그인</h3>
             <form action="/member/login" method="post">
                 <div class="mb-3">
                     <label for="InputEmail" class="form-label">이메일</label>
-                    <input type="email" class="form-control" id="InputEmail" name="username" >
+                    <input type="email" class="form-control" id="InputEmail" name="username">
                 </div>
                 <div class="mb-3">
                     <label for="InputPassword" class="form-label">비밀번호</label>
-                    <input type="password" class="form-control" id="InputPassword" name="password" >
+                    <input type="password" class="form-control" id="InputPassword" name="password">
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary">로그인</button>

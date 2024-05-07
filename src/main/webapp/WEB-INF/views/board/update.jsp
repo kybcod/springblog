@@ -23,25 +23,28 @@
 
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
 
-<div class="container" >
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-4">
+            <h3 class="mb-4"></h3>
             <form action="/update" method="post">
                 <input type="hidden" name="id" value="${board.id}">
                 <div class="mb-3">
                     <label for="InputTitle" class="form-label">제목</label>
-                    <input id="InputTitle" type="text" class="form-control" name="title" value="${board.title}" >
+                    <input id="InputTitle" type="text" class="form-control" name="title" value="${board.title}">
                 </div>
                 <div class="mb-3">
                     <label for="InputContent" class="form-label">본문</label>
-                    <textarea id="InputContent" class="form-control" name="content" cols="30" rows="10" >${board.content}</textarea>
+                    <textarea id="InputContent" class="form-control" name="content" cols="30"
+                              rows="10">${board.content}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="InputInserted" class="form-label">작성일</label>
-                    <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}" disabled>
+                    <input id="InputInserted" type="text" class="form-control" name="inserted" value="${board.inserted}"
+                           disabled>
                 </div>
                 <div class="mb-3">
-                        <button class="btn btn-primary">게시글 수정</button>
+                    <button class="btn btn-primary">게시글 수정</button>
                 </div>
             </form>
         </div>

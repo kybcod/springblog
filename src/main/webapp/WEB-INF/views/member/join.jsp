@@ -23,7 +23,7 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-6">
-            <h3 class="mb-4">회원 가입</h3>
+            <h3 class="mt-4 mb-4">회원 가입</h3>
             <form action="/member/join" method="post" onsubmit="return checkValues()">
                 <%--                div*3>label.form-label+input.form-control--%>
                 <div class="mb-3">

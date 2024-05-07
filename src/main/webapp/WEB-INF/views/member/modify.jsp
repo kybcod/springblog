@@ -15,27 +15,33 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
+            <h3 class="mb-4"></h3>
             <form action="/member/modify" method="post">
                 <input type="hidden" name="id" value="${member.id}">
                 <div class="mb-3">
                     <label for="InputEmail" class="form-label">이메일</label>
-                    <input id="InputEmail" type="text" class="form-control" name="email" value="${member.email}" disabled>
+                    <input id="InputEmail" type="text" class="form-control" name="email" value="${member.email}"
+                           disabled>
                 </div>
                 <div class="mb-3">
                     <label for="InputPassword" class="form-label">비밀번호</label>
-                    <input id="InputPassword" type="text" class="form-control" name="password" value="${member.password}">
+                    <input id="InputPassword" type="text" class="form-control" name="password"
+                           value="${member.password}">
                 </div>
                 <div class="mb-3">
                     <label for="InputCheckPassword" class="form-label">비밀번호 확인</label>
-                    <input id="InputCheckPassword" type="text" class="form-control" name="passwordCheck" value="${member.passwordCheck}">
+                    <input id="InputCheckPassword" type="text" class="form-control" name="passwordCheck"
+                           value="${member.passwordCheck}">
                 </div>
                 <div class="mb-3">
                     <label for="InputNickName" class="form-label">닉네임</label>
-                    <input id="InputNickName" type="text" class="form-control" name="nickName" value="${member.nickName}">
+                    <input id="InputNickName" type="text" class="form-control" name="nickName"
+                           value="${member.nickName}">
                 </div>
                 <div class="mb-3">
                     <label for="InputInserted" class="form-label">가입일자</label>
-                    <input id="InputInserted" type="text" class="form-control" name="inserted" value="${member.inserted}">
+                    <input id="InputInserted" type="text" class="form-control" name="inserted"
+                           value="${member.inserted}">
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-secondary">수정</button>

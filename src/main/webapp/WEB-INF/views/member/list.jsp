@@ -26,13 +26,12 @@
 <div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-6">
-            <h3 class="mb-4">회원 목록</h3>
+            <h3 class="mt-4 mb-4">회원 목록</h3>
             <table class="table">
                 <thead>
                 <tr>
                     <th>NO</th>
                     <th>이메일</th>
-                    <th>비밀번호</th>
                     <th>닉네임</th>
                     <th>가입일자</th>
                 </tr>
@@ -49,7 +48,6 @@
                         <td>
                                 ${member.email}
                         </td>
-                        <td>${member.password}</td>
                         <td>${member.nickName}</td>
                         <td>${member.inserted}</td>
                     </tr>

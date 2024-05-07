@@ -34,3 +34,5 @@ WHERE id > 0;
 
 ALTER TABLE board
     DROP COLUMN writer;
+
+USE prj1;

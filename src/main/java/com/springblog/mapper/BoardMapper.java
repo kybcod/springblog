@@ -20,10 +20,15 @@ public interface BoardMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Board board);
 
-    @Select("SELECT * FROM board ORDER BY id DESC")
+    @Select("SELECT b.id, b.title, m.nick_name writer FROM board b JOIN member m ON b.member_id = m.id ORDER BY id DESC")
     List<Board> selectAll();
 
-    @Select("SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id FROM board b JOIN member m ON b.member_id = m.id WHERE b.id = #{id}")
+    @Select("""
+            SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id
+            FROM board b JOIN member m 
+                ON b.member_id = m.id 
+            WHERE b.id = #{id}
+            """)
     Board selectById(Integer id);
 
     @Update("""

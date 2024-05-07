@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class BoardController {
 
     // 해당 아이디 게시글 조회
     @GetMapping("/board/view")
-    public String view(Integer id, Model model){
+    public String view(@RequestParam(value = "id") Integer id, Model model){
         model.addAttribute("board", service.get(id));
         return "board/view";
     }
@@ -49,7 +50,7 @@ public class BoardController {
     // 게시글 수정
     // 게시글 수정 처음 클릭시 update 페이지로 이동
     @GetMapping("/update")
-    public String updateForm(Integer id, Model model){
+    public String updateForm(@RequestParam(value = "id") Integer id, Model model){
         model.addAttribute("board", service.get(id));
         return "board/update";
     }
@@ -66,7 +67,7 @@ public class BoardController {
 
     // 게시글 삭제
     @PostMapping("/delete")
-    public String delete(Integer id, Authentication authentication){
+    public String delete(@RequestParam(value = "id") Integer id, Authentication authentication){
         if (service.hasAccess(id, authentication)){
             service.delete(id);
         }

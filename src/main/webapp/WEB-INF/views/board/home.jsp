@@ -31,7 +31,6 @@
           <tr>
             <th>NO</th>
             <th>제목</th>
-            <th>본문</th>
             <th>작성자</th>
             <th>작성일</th>
           </tr>
@@ -44,7 +43,6 @@
             <tr>
               <td>${fn:length(list) - status.index}</td>
               <td><a href="${link}">${board.title}</a></td>
-              <td>${board.content}</td>
               <td>${board.writer}</td>
               <td>${board.inserted}</td>
             </tr>

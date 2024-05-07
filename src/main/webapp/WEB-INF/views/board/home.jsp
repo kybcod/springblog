@@ -4,54 +4,117 @@
 
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
-        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"/>
-  <style>
-    @font-face {
-      font-family: 'TTHakgyoansimUndongjangL';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimUndongjangL.woff2') format('woff2');
-      font-weight: 300;
-      font-style: normal;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+          integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        @font-face {
+            font-family: 'TTHakgyoansimUndongjangL';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimUndongjangL.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+        }
 
-  </style>
+    </style>
 </head>
 <body>
 
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
 
-<div class="container" >
-  <div class="row justify-content-center">
-    <div class="col-4">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>NO</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-          </tr>
-          </thead>
-          <tbody class="table-group-divider">
-          <c:forEach var="board" items="${list}" varStatus="status">
-            <c:url var="link" value="board/view">
-              <c:param name="id" value="${board.id}"/>
-            </c:url>
-            <tr>
-              <td>${fn:length(list) - status.index}</td>
-              <td><a href="${link}">${board.title}</a></td>
-              <td>${board.writer}</td>
-              <td>${board.inserted}</td>
-            </tr>
-          </c:forEach>
-          </tbody>
-        </table>
+<div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <c:forEach var="board" items="${boardList}" varStatus="status">
+                    <c:url var="link" value="board/view">
+                        <c:param name="id" value="${board.id}"/>
+                    </c:url>
+                    <tr onclick="location.href='${link}'">
+                        <td style="color: blue">${pageInfo.totalBoard - (pageInfo.currentPage - 1) * 10 - status.index}</td>
+                        <td>${board.title}</td>
+                        <td>${board.writer}</td>
+                        <td>${board.inserted}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    <c:if test="${pageInfo.currentPage > 1}">
+                        <c:url value="/" var="pageLink">
+                            <c:param name="page" value="1"/>
+                        </c:url>
+                        <li class="page-item">
+                            <a class="page-link" href="${pageLink}">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:if test="${pageInfo.prevPage > 0}">
+                        <c:url value="/" var="pageLink">
+                            <c:param name="page" value="${pageInfo.prevPage}"/>
+                        </c:url>
+                        <li class="page-item">
+                            <a class="page-link" href="${pageLink}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+
+                    <c:forEach begin="${pageInfo.beginPage}" end="${pageInfo.endPage}" var="page">
+                        <c:url value="/" var="pageLink">
+                            <c:param name="page" value="${page}"/>
+                        </c:url>
+                        <li class="page-item ${pageInfo.currentPage eq page ? 'active' : ''}">
+                            <a class="page-link" href="${pageLink}">${page}</a>
+                        </li>
+                    </c:forEach>
+
+                    <c:if test="${pageInfo.nextPage < pageInfo.endPage}">
+                        <c:url value="/" var="pageLink">
+                            <c:param name="page" value="${pageInfo.nextPage}"/>
+                        </c:url>
+                        <li class="page-item">
+                            <a class="page-link" href="${pageLink}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:if test="${pageInfo.currentPage < pageInfo.lastPage}">
+                        <c:url value="/" var="pageLink">
+                            <c:param name="page" value="${pageInfo.lastPage}"/>
+                        </c:url>
+                        <li class="page-item">
+                            <a class="page-link" href="${pageLink}">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="

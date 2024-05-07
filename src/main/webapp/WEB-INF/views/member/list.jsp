@@ -44,7 +44,7 @@
                     </c:url>
                     <tr onclick="location.href='${viewMember}'">
                         <td style="color: blue">
-                                ${fn:length(memberList)-status.index}
+                                ${(memberInfo.totalMember) - (memberInfo.currentPage - 1) * 10 -status.index}
                         </td>
                         <td>
                                 ${member.email}
@@ -56,33 +56,54 @@
                 </c:forEach>
                 </tbody>
             </table>
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <span aria-hidden="true">&laquo;&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <span aria-hidden="true">&raquo;&raquo;</span>
-                        </a>
-                    </li>
+
+
+                    <c:if test="${memberInfo.currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="list?page=1">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+
+                    <c:if test="${memberInfo.prevPage > 0 }">
+                        <li class="page-item">
+                            <a class="page-link" href="list?page=${memberInfo.prevPage}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                    </c:if>
+
+
+                    <c:forEach var="pageNumber" begin="${memberInfo.beginPage}" end="${memberInfo.endPage}">
+                        <li class="page-item ${memberInfo.currentPage eq pageNumber ? 'active' : ''}">
+                            <a class="page-link" href="list?page=${pageNumber}">${pageNumber}</a>
+                        </li>
+                    </c:forEach>
+
+                    <c:if test="${memberInfo.nextPage < memberInfo.endPage}">
+                        <li class="page-item">
+                            <a class="page-link" href="list?page=${memberInfo.nextPage}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:if test="${memberInfo.currentPage < memberInfo.lastPage}">
+                        <li class="page-item">
+                            <a class="page-link" href="list?page=${memberInfo.lastPage}">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
+
         </div>
     </div>
 </div>

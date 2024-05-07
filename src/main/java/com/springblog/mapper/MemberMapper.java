@@ -1,11 +1,7 @@
 package com.springblog.mapper;
 
 import com.springblog.domain.Member;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -23,6 +19,9 @@ public interface MemberMapper {
             SELECT * FROM member ORDER BY id DESC
             """)
     List<Member> selectAll();
+
+    @Select("SELECT COUNT(*) FROM member")
+    int countAll();
 
     @Select("""
             SELECT * FROM member WHERE id = #{id}
@@ -46,4 +45,8 @@ public interface MemberMapper {
             """)
     Member selectByEmail(String email);
 
+    @Select("""
+            SELECT * FROM member ORDER BY id DESC LIMIT #{offset},10
+            """)
+    List<Member> selectAllByPage(int offset);
 }

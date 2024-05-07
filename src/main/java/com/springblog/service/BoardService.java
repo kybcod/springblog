@@ -6,10 +6,11 @@ import com.springblog.domain.Member;
 import com.springblog.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.access.WebInvocationPrivilegeEvaluator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -17,18 +18,40 @@ import java.util.List;
 public class BoardService {
 
     private final BoardMapper mapper;
+    private final WebInvocationPrivilegeEvaluator privilegeEvaluator;
 
     public void insert(Board board, Authentication authentication) {
         Object principal = authentication.getPrincipal();
-        if(principal instanceof CustomerUser user){
+        if (principal instanceof CustomerUser user) {
             Member member = user.getMember();
             board.setMemberId(member.getId());
             mapper.insert(board);
         }
     }
 
-    public List<Board> list() {
-        return mapper.selectAll();
+    public Map<String, Object> list(Integer page) {
+        int offset = (page - 1) * 10;
+        int totalBoard = mapper.countAll(); // 전체 게시물
+        int lastPage = (totalBoard - 1) / 10 + 1;
+
+        int endPage = ((page - 1) / 10 + 1) * 10;
+        int beginPage = endPage - 9;
+        endPage = Math.min(endPage, lastPage);
+
+        int prevPage = beginPage - 10;
+        int nextPage = beginPage + 10;
+
+        int currentPage = page;
+
+        return Map.of("boardList", mapper.selectAllByPage(offset),
+                "pageInfo", Map.of("lastPage", lastPage,
+                        "endPage", endPage,
+                        "beginPage", beginPage,
+                        "prevPage", prevPage,
+                        "nextPage", nextPage,
+                        "currentPage", currentPage,
+                        "totalBoard", totalBoard)
+        );
     }
 
     public Board get(Integer id) {
@@ -44,12 +67,12 @@ public class BoardService {
     }
 
     public boolean hasAccess(Integer id, Authentication authentication) {
-        if (authentication == null){
+        if (authentication == null) {
             return false;
         }
         Board board = mapper.selectById(id);
         Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomerUser user){
+        if (principal instanceof CustomerUser user) {
             Member member = user.getMember();
             return board.getMemberId().equals(member.getId());
         }

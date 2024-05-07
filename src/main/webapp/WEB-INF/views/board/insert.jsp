@@ -23,7 +23,7 @@
 
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
 
-<div class="container" >
+<div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
     <div class="row justify-content-center">
         <div class="col-4">
             <form action="/insert" method="post">

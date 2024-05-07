@@ -7,9 +7,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -29,19 +29,20 @@ public class MemberController {
         return "redirect:/member/list";
     }
 
+    // member/list?page=3
     @GetMapping("list")
-    public void list(Model model) {
-        model.addAttribute("memberList", service.list());
+    public void list(@RequestParam(defaultValue = "1", value = "page") Integer page, Model model) {
+        model.addAllAttributes(service.list(page));
     }
 
     @GetMapping("")
-    public String view(Integer id, Model model) {
+    public String view(@RequestParam(value = "id") Integer id, Model model) {
         model.addAttribute("member", service.get(id));
         return "member/info";
     }
 
     @GetMapping("modify")
-    public String updateForm(Integer id, Model model) {
+    public String updateForm(@RequestParam(value = "id") Integer id, Model model) {
         model.addAttribute("member", service.get(id));
         return "member/modify";
     }
@@ -54,7 +55,7 @@ public class MemberController {
     }
 
     @PostMapping("delete")
-    public String delete(Integer id, Authentication authentication) {
+    public String delete(@RequestParam(value = "id") Integer id, Authentication authentication) {
         if (service.hasAccess(id, authentication)) {
             service.delete(id);
         }
@@ -62,7 +63,7 @@ public class MemberController {
     }
 
     @GetMapping("login")
-    public String login(){
+    public String login() {
         return "member/login";
     }
 }

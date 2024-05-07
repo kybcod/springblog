@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -25,8 +25,26 @@ public class MemberService {
         mapper.insert(member);
     }
 
-    public List<Member> list() {
-        return mapper.selectAll();
+    public Map<String, Object> list(Integer page) {
+        int offset = (page - 1) * 10;
+        int totalMember = mapper.countAll();
+        int lastPage = (totalMember - 1) / 10 + 1;
+        int endPage = ((page - 1) / 10 + 1) * 10;
+        int beginPage = endPage - 9;
+        endPage = Math.min(endPage, lastPage);
+        int currentPage = page;
+        int prevPage = beginPage - 10;
+        int nextPage = beginPage + 10;
+
+
+        return Map.of("memberList", mapper.selectAllByPage(offset),
+                "memberInfo", Map.of("totalMember", totalMember,
+                        "lastPage", lastPage,
+                        "endPage", endPage,
+                        "beginPage", beginPage,
+                        "currentPage", currentPage,
+                        "prevPage", prevPage,
+                        "nextPage", nextPage));
     }
 
     public Member get(Integer id) {
@@ -36,7 +54,7 @@ public class MemberService {
     public void update(Member member) {
         if (member.getPassword() != null && !member.getPassword().isEmpty()) {
             member.setPassword(encoder.encode(member.getPassword()));
-        }else {
+        } else {
             Member old = mapper.selectById(member.getId());
             member.setPassword(old.getPassword());
         }

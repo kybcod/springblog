@@ -1,22 +1,16 @@
 package com.springblog.mapper;
 
 import com.springblog.domain.Board;
-import com.springblog.domain.Member;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface BoardMapper {
     @Insert("""
-    INSERT INTO board (title, content, member_id)
-    VALUES (#{title}, #{content}, #{memberId})
-    """)
+            INSERT INTO board (title, content, member_id)
+            VALUES (#{title}, #{content}, #{memberId})
+            """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Board board);
 
@@ -43,4 +37,17 @@ public interface BoardMapper {
 
     @Delete("DELETE FROM board WHERE member_id = #{id}")
     int deleteByMemberId(Integer id);
+
+    @Select("""
+            SELECT b.id, b.title, m.nick_name writer
+            FROM board b JOIN member m ON b.member_id = m.id
+            ORDER BY id DESC LIMIT #{offset}, 10
+            """)
+    List<Board> selectAllByPage(int offset);
+
+
+    @Select("""
+            SELECT COUNT(*) FROM board
+            """)
+    int countAll();
 }

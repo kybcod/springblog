@@ -36,3 +36,22 @@ ALTER TABLE board
     DROP COLUMN writer;
 
 USE prj1;
+
+CREATE TABLE authority
+(
+    id        INT PRIMARY KEY AUTO_INCREMENT,
+    member_id INT         NOT NULL REFERENCES member (id),
+    name      VARCHAR(20) NOT NULL
+);
+
+SELECT *
+FROM authority;
+
+SELECT *
+FROM member m
+         LEFT JOIN authority a on m.id = a.member_id;
+SELECT *
+FROM member;
+
+INSERT INTO authority (member_id, name)
+VALUES (48, 'admin');

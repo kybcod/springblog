@@ -49,4 +49,7 @@ public interface MemberMapper {
             SELECT * FROM member ORDER BY id DESC LIMIT #{offset},10
             """)
     List<Member> selectAllByPage(int offset);
+
+    @Select("SELECT name FROM authority WHERE member_id = #{member_id}")
+    List<String> selectAuthorityByMemberId(Integer memberId);
 }

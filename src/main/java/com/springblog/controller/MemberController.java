@@ -3,6 +3,7 @@ package com.springblog.controller;
 import com.springblog.domain.Member;
 import com.springblog.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,14 +32,18 @@ public class MemberController {
 
     // member/list?page=3
     @GetMapping("list")
+    @PreAuthorize("hasAnyAuthority('admin')")
     public void list(@RequestParam(defaultValue = "1", value = "page") Integer page, Model model) {
         model.addAllAttributes(service.list(page));
     }
 
     @GetMapping("")
-    public String view(@RequestParam(value = "id") Integer id, Model model) {
-        model.addAttribute("member", service.get(id));
-        return "member/info";
+    public String view(@RequestParam(value = "id") Integer id, Authentication authentication, Model model) {
+        if (service.hasAccess(id, authentication) || service.isAdmin(authentication)) {
+            model.addAttribute("member", service.get(id));
+            return "member/info";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("modify")

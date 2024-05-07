@@ -33,11 +33,22 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+
                 <sec:authorize access="isAuthenticated()">
+                    <sec:authorize access="hasAnyAuthority('admin')">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
+                        </li>
+                    </sec:authorize>
+                </sec:authorize>
+
+                <sec:authorize access="isAuthenticated()">
+                    <sec:authentication property="principal.member" var="authMember"/>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
+                        <a class="nav-link active" aria-current="page" href="/member/list?id=${authMember.id}">내 정보</a>
                     </li>
                 </sec:authorize>
+
                 <sec:authorize access="not isAuthenticated()">
                     <li class="nav-item">
                         <a class="nav-link" href="/member/join">회원가입</a>

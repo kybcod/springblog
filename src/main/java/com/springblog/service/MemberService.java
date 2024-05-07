@@ -6,6 +6,7 @@ import com.springblog.mapper.BoardMapper;
 import com.springblog.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -75,6 +76,14 @@ public class MemberService {
         if (principal instanceof CustomerUser user) {
             Member member = user.getMember();
             return member.getId().equals(id);
+        }
+        return false;
+    }
+
+    public boolean isAdmin(Authentication authentication) {
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof CustomerUser user) {
+            return user.getAuthorities().stream().map(GrantedAuthority::getAuthority).anyMatch(authority -> authority.equals("admin"));
         }
         return false;
     }

@@ -26,7 +26,7 @@ public interface BoardMapper {
     Board selectById(Integer id);
 
     @Select("SELECT * FROM board WHERE title LIKE CONCAT('%', #{keyword}, '%')")
-    Board selectByTitle(String title);
+    List<Board> selectByTitle(String title);
 
     @Update("""
             UPDATE board

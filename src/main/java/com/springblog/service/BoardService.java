@@ -10,6 +10,7 @@ import org.springframework.security.web.access.WebInvocationPrivilegeEvaluator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -54,7 +55,7 @@ public class BoardService {
         return mapper.selectById(id);
     }
 
-    public Board getByTitle(String title) {
+    public List<Board> getByTitle(String title) {
         return mapper.selectByTitle(title);
     }
 

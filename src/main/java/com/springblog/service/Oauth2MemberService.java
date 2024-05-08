@@ -1,9 +1,9 @@
 package com.springblog.service;
 
-import com.springblog.config.CustomOauth2UserDetails;
+import com.springblog.config.CustomOauth2MemberDetails;
 import com.springblog.config.NaverMemberInfo;
 import com.springblog.domain.Member;
-import com.springblog.domain.OAuth2UserInfo;
+import com.springblog.domain.OAuth2MemberInfo;
 import com.springblog.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class Oauth2UserService extends DefaultOAuth2UserService {
+public class Oauth2MemberService extends DefaultOAuth2UserService {
 
     private final MemberMapper mapper;
 
@@ -33,7 +33,7 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
 
         String platfrom = userRequest.getClientRegistration().getRegistrationId(); //로그인한 클라이언트의 등록 ID
 
-        OAuth2UserInfo response = null;
+        OAuth2MemberInfo response = null;
         if (platfrom.equals("naver")) {
             System.out.println("네이버 로그인 요청");
             response = new NaverMemberInfo((Map) oAuth2User.getAttributes().get("response")); //네이버에 있는 사용자 정보 추출
@@ -58,7 +58,7 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
             userInfoDto = member;
         }
 
-        return new CustomOauth2UserDetails(userInfoDto, oAuth2User.getAttributes());
+        return new CustomOauth2MemberDetails(userInfoDto, oAuth2User.getAttributes());
     }
 
 

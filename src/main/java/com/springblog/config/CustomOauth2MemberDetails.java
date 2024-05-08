@@ -10,17 +10,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class CustomOauth2UserDetails implements UserDetails, OAuth2User {
+public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
 
     private Member member;
     private Map<String, Object> attributes; // 네이버에서 받아온 정보
 
-    public CustomOauth2UserDetails(Member member, Map<String, Object> attributes) {
+    public CustomOauth2MemberDetails(Member member, Map<String, Object> attributes) {
         this.member = member;
         this.attributes = attributes;
     }
 
-    public CustomOauth2UserDetails(Member member) {
+    public CustomOauth2MemberDetails(Member member) {
         this.member = member;
     }
 

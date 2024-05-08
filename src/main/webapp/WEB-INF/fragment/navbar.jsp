@@ -33,27 +33,36 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/member?id=${member.id}">내 정보</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/member/join">회원가입</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/insert">게시글 쓰기</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/member/login">로그인</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">로그아웃</a>
-                </li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/member?id=${member.id}">내 정보</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="not isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/member/join">회원가입</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/insert">게시글 쓰기</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="not isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/member/login">로그인</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">로그아웃</a>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>

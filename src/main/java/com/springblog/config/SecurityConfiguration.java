@@ -1,26 +1,25 @@
 package com.springblog.config;
 
-import com.springblog.service.Oauth2UserService;
+import com.springblog.service.Oauth2MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
-public class AppConfiguration {
+public class SecurityConfiguration {
 
-    private final Oauth2UserService oauth2UserService;
+    private final Oauth2MemberService oauth2UserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(csrf -> csrf.disable())
                 .formLogin(login -> login.loginPage("/member/login"))
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest()

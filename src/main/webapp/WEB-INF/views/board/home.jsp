@@ -52,7 +52,7 @@
 
 
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
+                <ul class="pagination justify-content-center">
 
                     <c:if test="${pageInfo.currentPage > 1}">
                         <c:url value="/" var="pageLink">

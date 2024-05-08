@@ -11,7 +11,6 @@ public class CustomerUser extends User {
 
     public CustomerUser(Member member) {
         super(member.getEmail(), member.getPassword(), List.of());
-//        member.getPassword(), member.getAuthority().stream().map(SimpleGrantedAuthority::new).toList()
         this.member = member;
     }
 

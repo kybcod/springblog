@@ -44,6 +44,12 @@ public class BoardController {
         return "board/view";
     }
 
+    @GetMapping("/board/search")
+    public String search(String title, Model model) {
+        model.addAttribute("title", service.getByTitle(title));
+        return "board/home";
+    }
+
     // 게시글 수정
     // 게시글 수정 처음 클릭시 update 페이지로 이동
     @GetMapping("/update")
@@ -66,6 +72,5 @@ public class BoardController {
         service.delete(id);
         return "redirect:/";
     }
-
 
 }

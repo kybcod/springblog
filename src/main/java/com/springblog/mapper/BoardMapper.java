@@ -25,6 +25,9 @@ public interface BoardMapper {
             """)
     Board selectById(Integer id);
 
+    @Select("SELECT * FROM board WHERE title LIKE CONCAT('%', #{keyword}, '%')")
+    Board selectByTitle(String title);
+
     @Update("""
             UPDATE board
             SET title = #{title}, content = #{content}
@@ -50,4 +53,6 @@ public interface BoardMapper {
             SELECT COUNT(*) FROM board
             """)
     int countAll();
+
+
 }

@@ -54,6 +54,10 @@ public class BoardService {
         return mapper.selectById(id);
     }
 
+    public Board getByTitle(String title) {
+        return mapper.selectByTitle(title);
+    }
+
     public void update(Board board) {
         mapper.update(board);
     }

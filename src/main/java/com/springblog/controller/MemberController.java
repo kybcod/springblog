@@ -38,11 +38,6 @@ public class MemberController {
 
     @GetMapping("")
     public String view(@RequestParam(value = "id") Integer id, Model model) {
-//        if (service.hasAccess(id, authentication) || service.isAdmin(authentication)) {
-//            model.addAttribute("member", service.get(id));
-//            return "member/info";
-//        }
-//        return "redirect:/";
         model.addAttribute("member", service.get(id));
         return "member/info";
     }
@@ -62,9 +57,7 @@ public class MemberController {
 
     @PostMapping("delete")
     public String delete(@RequestParam(value = "id") Integer id, Authentication authentication) {
-        if (service.hasAccess(id, authentication)) {
-            service.delete(id);
-        }
+        service.delete(id);
         return "redirect:/logout";
     }
 

@@ -1,10 +1,12 @@
 package com.springblog.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 public class Member {
     private Integer id;
     private String email;

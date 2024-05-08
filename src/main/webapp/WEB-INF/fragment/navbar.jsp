@@ -34,47 +34,32 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
 
-                <sec:authorize access="isAuthenticated()">
-                    <%--                    <sec:authorize access="hasAnyAuthority('admin')">--%>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
-                    </li>
-                    <%--                    </sec:authorize>--%>
-                </sec:authorize>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/member/list">회원 목록</a>
+                </li>
 
-                <sec:authorize access="isAuthenticated()">
-                    <sec:authentication property="principal.member" var="authMember"/>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/member?id=${authMember.id}">내 정보</a>
-                    </li>
-                </sec:authorize>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/member?id=${member.id}">내 정보</a>
+                </li>
 
-                <sec:authorize access="not isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/member/join">회원가입</a>
-                    </li>
-                </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/insert">게시글 쓰기</a>
-                    </li>
-                </sec:authorize>
-                <sec:authorize access="not isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/member/login">로그인</a>
-                    </li>
-                </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">로그아웃</a>
-                    </li>
-                </sec:authorize>
+                <li class="nav-item">
+                    <a class="nav-link" href="/member/join">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/insert">게시글 쓰기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/member/login">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">로그아웃</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<%--로그인 권한 : home, memberList,board Insert--%>
 
+<%--로그인 권한 : home, memberList,board Insert--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

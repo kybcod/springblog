@@ -25,8 +25,8 @@ public class BoardController {
     }
 
     @PostMapping("/insert")
-    public String insertPost(Board board, Authentication authentication) {
-        service.insert(board, authentication);
+    public String insertPost(Board board) {
+        service.insert(board);
         return "redirect:/";
     }
 
@@ -55,9 +55,7 @@ public class BoardController {
     // 게시글 수정 후 수정된 내용 저장
     @PostMapping("/update")
     public String updatePost(RedirectAttributes rttr, Board board, Authentication authentication) {
-        if (service.hasAccess(board.getId(), authentication)) {
-            service.update(board);
-        }
+        service.update(board);
         rttr.addAttribute("id", board.getId());
         return "redirect:/board/view";
     }
@@ -65,9 +63,7 @@ public class BoardController {
     // 게시글 삭제
     @PostMapping("/delete")
     public String delete(@RequestParam(value = "id") Integer id, Authentication authentication) {
-        if (service.hasAccess(id, authentication)) {
-            service.delete(id);
-        }
+        service.delete(id);
         return "redirect:/";
     }
 

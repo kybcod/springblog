@@ -63,5 +63,9 @@ FROM member m
 SELECT *
 FROM member;
 
+DELETE
+FROM member
+WHERE email = 'kyb-0215@naver.com';
+
 INSERT INTO authority (member_id, name)
 VALUES (48, 'admin');

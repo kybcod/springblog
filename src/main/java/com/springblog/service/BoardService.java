@@ -20,13 +20,9 @@ public class BoardService {
     private final BoardMapper mapper;
     private final WebInvocationPrivilegeEvaluator privilegeEvaluator;
 
-    public void insert(Board board, Authentication authentication) {
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomerUser user) {
-            Member member = user.getMember();
-            board.setMemberId(member.getId());
-            mapper.insert(board);
-        }
+    public void insert(Board board) {
+        mapper.insert(board);
+
     }
 
     public Map<String, Object> list(Integer page) {

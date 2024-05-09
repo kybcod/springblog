@@ -112,7 +112,11 @@
         </div>
     </div>
 
-    <c:import url="/WEB-INF/views/board/search.jsp"/>
+    <form action="/board/search">
+        <input type="search" name="title" id="search" placeholder="검색어를 입력해주세요.">
+        <button>검색</button>
+    </form>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"

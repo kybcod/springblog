@@ -44,7 +44,7 @@ public class BoardController {
         return "board/view";
     }
 
-    //  /board/search?title=ㅁㄷㄹ
+    //  /board/search?title=aaa
     @GetMapping("/board/search")
     public String search(@RequestParam(value = "title") String title, Model model) {
         model.addAttribute("searchTitle", service.getByTitle(title));

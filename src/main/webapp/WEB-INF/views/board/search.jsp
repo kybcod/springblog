@@ -36,89 +36,24 @@
                 </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                <c:forEach var="board" items="${boardList}" varStatus="status">
-                    <c:url var="link" value="board/view">
-                        <c:param name="id" value="${board.id}"/>
+                <c:forEach var="search" items="${searchTitle}" varStatus="status">
+                    <c:url var="link" value="board/search">
+                        <c:param name="title" value="${search.title}"/>
                     </c:url>
                     <tr onclick="location.href='${link}'">
                         <td style="color: blue">${pageInfo.totalBoard - (pageInfo.currentPage - 1) * 10 - status.index}</td>
-                        <td>${board.title}</td>
-                        <td>${board.writer}</td>
-                        <td>${board.inserted}</td>
+                        <td>${search.title}</td>
+                        <td>${search.writer}</td>
+                        <td>${search.inserted}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
 
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-
-                    <c:if test="${pageInfo.currentPage > 1}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="1"/>
-                        </c:url>
-                        <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
-                                <span aria-hidden="true">&laquo;&laquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-
-                    <c:if test="${pageInfo.prevPage > 0}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.prevPage}"/>
-                        </c:url>
-                        <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-
-
-                    <c:forEach begin="${pageInfo.beginPage}" end="${pageInfo.endPage}" var="page">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${page}"/>
-                        </c:url>
-                        <li class="page-item ${pageInfo.currentPage eq page ? 'active' : ''}">
-                            <a class="page-link" href="${pageLink}">${page}</a>
-                        </li>
-                    </c:forEach>
-
-                    <c:if test="${pageInfo.nextPage < pageInfo.lastPage}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.nextPage}"/>
-                        </c:url>
-                        <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-
-                    <c:if test="${pageInfo.currentPage < pageInfo.lastPage}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.lastPage}"/>
-                        </c:url>
-                        <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
-                                <span aria-hidden="true">&raquo;&raquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-                </ul>
-            </nav>
         </div>
     </div>
 
-    <c:import url="/WEB-INF/views/board/search.jsp"/>
 </div>
-
-<form action="/board/search">
-    <input type="search" name="title" id="search">
-    <button>검색</button>
-</form>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"

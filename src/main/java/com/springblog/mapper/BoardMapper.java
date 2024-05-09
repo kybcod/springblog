@@ -25,7 +25,12 @@ public interface BoardMapper {
             """)
     Board selectById(Integer id);
 
-    @Select("SELECT * FROM board WHERE title LIKE CONCAT('%', #{keyword}, '%')")
+    @Select("""
+            <script>
+                <bind name="keyword" value="'%' + title + '%'" />
+                SELECT * FROM board WHERE title LIKE #{keyword}
+            </script>
+            """)
     List<Board> selectByTitle(String title);
 
     @Update("""

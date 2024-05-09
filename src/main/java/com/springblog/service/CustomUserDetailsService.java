@@ -1,6 +1,6 @@
 package com.springblog.service;
 
-import com.springblog.domain.CustomerUser;
+import com.springblog.config.CustomOauth2MemberDetails;
 import com.springblog.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +16,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new CustomerUser(mapper.selectByEmail(username));
+        return new CustomOauth2MemberDetails(mapper.selectByEmail(username));
     }
 }

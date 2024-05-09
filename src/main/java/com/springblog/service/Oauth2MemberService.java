@@ -42,9 +42,9 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
 
         // DB에 저장
         Member member = mapper.selectByEmail(response.getEmail());
-        Member userInfoDto;
+        System.out.println("member.toString() = " + member.toString());
         if (member == null) {
-            userInfoDto = Member
+            member = Member
                     .builder()
                     .email(response.getEmail())
                     .nickName(response.getNickName())
@@ -53,13 +53,9 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
 
             // 네이버에서 받은 이메일 조회 후 해당 이메일이 없는 경우 insert
             System.out.println("최초");
-            mapper.insert(userInfoDto);
-        } else {
-            userInfoDto = member;
+            mapper.insert(member);
         }
 
-        return new CustomOauth2MemberDetails(userInfoDto, oAuth2User.getAttributes());
+        return new CustomOauth2MemberDetails(member, oAuth2User.getAttributes());
     }
-
-
 }

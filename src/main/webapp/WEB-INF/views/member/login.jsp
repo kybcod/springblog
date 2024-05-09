@@ -40,7 +40,7 @@
                     <button class="btn btn-primary">로그인</button>
                 </div>
                 <div>
-                    <a href="/oauth2/authorization/naver" target="_blank">
+                    <a href="/oauth2/authorization/naver">
                         <img src="https://i.namu.wiki/i/wC4Xv_cwLVa_AT5XLk0Ma6Wuog1jFLfsGXI3h120K2UHnW9iKG2O50vfs5BlmN0xGrYpmJGCWFAnoxozTpgBVSS0sJKRphiQjuLqpjLCC-oKBKKqbn_sDRyH6lcRhcFKabiHokaKNDlqPpovYc0jpA.svg"
                              width="50px" height="50px"
                              alt="네이버 로그인">

@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-
 <nav class="navbar" style="background-color: skyblue; font-family: 'TTHakgyoansimUndongjangL'">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">YBK</a>
@@ -39,7 +38,9 @@
                     </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
+                    <sec:authentication var="member" property="principal.member"/>
                     <li class="nav-item">
+<%--                        <a class="nav-link active" aria-current="page" href="/member?id=5">내 정보</a>--%>
                         <a class="nav-link active" aria-current="page" href="/member?id=${member.id}">내 정보</a>
                     </li>
                 </sec:authorize>

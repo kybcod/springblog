@@ -2,6 +2,7 @@ package com.springblog.config;
 
 
 import com.springblog.domain.Member;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+@Getter
 public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
 
     private Member member;
@@ -26,7 +28,7 @@ public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
 
     @Override
     public String getName() {
-        return null;
+        return member.getNickName();
     }
 
     @Override
@@ -45,9 +47,7 @@ public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
     }
 
     @Override
-    public String getUsername() {
-        return member.getNickName();
-    }
+    public String getUsername() { return member.getEmail(); }
 
     @Override
     public boolean isAccountNonExpired() {

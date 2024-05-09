@@ -37,9 +37,12 @@ public class MemberController {
     }
 
     @GetMapping("")
-    public String view(@RequestParam(value = "id") Integer id, Model model) {
-        model.addAttribute("member", service.get(id));
-        return "member/info";
+    public String view(@RequestParam(value = "id") Integer id,Authentication authentication, Model model) {
+        if (service.hasAccess(id, authentication)) {
+            model.addAttribute("member", service.get(id));
+            return "member/info";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("modify")

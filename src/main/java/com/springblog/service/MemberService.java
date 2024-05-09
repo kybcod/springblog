@@ -1,6 +1,6 @@
 package com.springblog.service;
 
-import com.springblog.domain.CustomerUser;
+import com.springblog.config.CustomOauth2MemberDetails;
 import com.springblog.domain.Member;
 import com.springblog.mapper.BoardMapper;
 import com.springblog.mapper.MemberMapper;
@@ -72,17 +72,16 @@ public class MemberService {
             return false;
         }
 
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomerUser user) {
-            Member member = user.getMember();
-            return member.getId().equals(id);
+        Object object = authentication.getPrincipal();
+        if (object instanceof CustomOauth2MemberDetails user) {
+            return user.getMember().getId().equals(id);
         }
         return false;
     }
 
     public boolean isAdmin(Authentication authentication) {
         Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomerUser user) {
+        if (principal instanceof CustomOauth2MemberDetails user) {
             return user.getAuthorities().stream().map(GrantedAuthority::getAuthority).anyMatch(authority -> authority.equals("admin"));
         }
         return false;

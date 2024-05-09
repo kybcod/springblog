@@ -1,7 +1,7 @@
 package com.springblog.service;
 
+import com.springblog.config.CustomOauth2MemberDetails;
 import com.springblog.domain.Board;
-import com.springblog.domain.CustomerUser;
 import com.springblog.domain.Member;
 import com.springblog.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
@@ -73,7 +73,7 @@ public class BoardService {
         }
         Board board = mapper.selectById(id);
         Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomerUser user) {
+        if (principal instanceof CustomOauth2MemberDetails user) {
             Member member = user.getMember();
             return board.getMemberId().equals(member.getId());
         }

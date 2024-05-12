@@ -62,7 +62,9 @@ public class BoardController {
     // 게시글 수정 후 수정된 내용 저장
     @PostMapping("/update")
     public String updatePost(RedirectAttributes rttr, Board board, Authentication authentication) {
-        service.update(board);
+        if (service.hasAccess(board.getId(), authentication)) {
+            service.update(board);
+        }
         rttr.addAttribute("id", board.getId());
         return "redirect:/board/view";
     }
@@ -70,7 +72,9 @@ public class BoardController {
     // 게시글 삭제
     @PostMapping("/delete")
     public String delete(@RequestParam(value = "id") Integer id, Authentication authentication) {
-        service.delete(id);
+        if (service.hasAccess(id, authentication)) {
+            service.delete(id);
+        }
         return "redirect:/";
     }
 

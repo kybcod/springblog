@@ -39,7 +39,7 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
             System.out.println("네이버 로그인 요청");
             response = new NaverMemberInfo((Map) oAuth2User.getAttributes().get("response")); //네이버에 있는 사용자 정보 추출
             System.out.println(response);
-        } elif (platform.eqauls("kakao")){
+        } else if (platform.equals("kakao")) {
             System.out.println("카카오 로그인 요청");
             response = new KakaoMemberInfo((Map) oAuth2User.getAttributes().get("response")); //카카오에 있는 사용자 정보 추출
             System.out.println(response);

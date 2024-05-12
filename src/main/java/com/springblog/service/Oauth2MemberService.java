@@ -1,6 +1,7 @@
 package com.springblog.service;
 
 import com.springblog.config.CustomOauth2MemberDetails;
+import com.springblog.config.KakaoMemberInfo;
 import com.springblog.config.NaverMemberInfo;
 import com.springblog.domain.Member;
 import com.springblog.domain.OAuth2MemberInfo;
@@ -31,12 +32,16 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
         OAuth2User oAuth2User = super.loadUser(userRequest); //네이버 사용자 정보 로드
         System.out.println("oAuth2User = " + oAuth2User.getAttributes());
 
-        String platfrom = userRequest.getClientRegistration().getRegistrationId(); //로그인한 클라이언트의 등록 ID
+        String platform = userRequest.getClientRegistration().getRegistrationId(); //로그인한 클라이언트의 등록 ID
 
         OAuth2MemberInfo response = null;
-        if (platfrom.equals("naver")) {
+        if (platform.equals("naver")) {
             System.out.println("네이버 로그인 요청");
             response = new NaverMemberInfo((Map) oAuth2User.getAttributes().get("response")); //네이버에 있는 사용자 정보 추출
+            System.out.println(response);
+        } elif (platform.eqauls("kakao")){
+            System.out.println("카카오 로그인 요청");
+            response = new KakaoMemberInfo((Map) oAuth2User.getAttributes().get("response")); //카카오에 있는 사용자 정보 추출
             System.out.println(response);
         }
 

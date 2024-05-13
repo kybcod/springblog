@@ -23,7 +23,8 @@ CREATE TABLE board
 );
 
 SELECT *
-FROM board;
+FROM board
+ORDER BY id DESC;
 
 
 ALTER TABLE board
@@ -52,7 +53,8 @@ SELECT *
 FROM member m
          LEFT JOIN authority a on m.id = a.member_id;
 SELECT *
-FROM member;
+FROM member
+ORDER BY id DESC;
 
 DELETE
 FROM member

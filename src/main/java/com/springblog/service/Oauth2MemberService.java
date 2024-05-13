@@ -7,7 +7,6 @@ import com.springblog.domain.Member;
 import com.springblog.domain.OAuth2MemberInfo;
 import com.springblog.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -18,7 +17,6 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class Oauth2MemberService extends DefaultOAuth2UserService {
 
     private final MemberMapper mapper;
@@ -41,7 +39,7 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
             System.out.println(response);
         } else if (platform.equals("kakao")) {
             System.out.println("카카오 로그인 요청");
-            response = new KakaoMemberInfo((Map) oAuth2User.getAttributes().get("response")); //카카오에 있는 사용자 정보 추출
+            response = new KakaoMemberInfo((Map) oAuth2User.getAttributes()); //카카오에 있는 사용자 정보 추출
             System.out.println(response);
         }
 

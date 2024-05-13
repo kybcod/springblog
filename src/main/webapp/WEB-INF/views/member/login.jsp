@@ -45,6 +45,10 @@
                              width="50px" height="50px"
                              alt="네이버 로그인">
                     </a>
+                    <a href="/oauth2/authorization/kakao">
+                        <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png"
+                             alt="카카오 로그인">
+                    </a>
                 </div>
             </form>
 

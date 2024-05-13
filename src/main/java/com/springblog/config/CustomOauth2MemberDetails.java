@@ -11,8 +11,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+
 @Getter
 public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
+
 
     private Member member;
     private Map<String, Object> attributes; // 네이버에서 받아온 정보
@@ -47,7 +49,9 @@ public class CustomOauth2MemberDetails implements UserDetails, OAuth2User {
     }
 
     @Override
-    public String getUsername() { return member.getEmail(); }
+    public String getUsername() {
+        return member.getEmail();
+    }
 
     @Override
     public boolean isAccountNonExpired() {

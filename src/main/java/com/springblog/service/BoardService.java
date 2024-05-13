@@ -6,7 +6,6 @@ import com.springblog.domain.Member;
 import com.springblog.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.access.WebInvocationPrivilegeEvaluator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,10 +18,14 @@ import java.util.Map;
 public class BoardService {
 
     private final BoardMapper mapper;
-    private final WebInvocationPrivilegeEvaluator privilegeEvaluator;
 
-    public void insert(Board board) {
-        mapper.insert(board);
+    public void insert(Board board, Authentication authentication) {
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof CustomOauth2MemberDetails user) {
+            board.setMemberId(user.getMember().getId());
+            mapper.insert(board);
+
+        }
 
     }
 

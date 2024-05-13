@@ -25,12 +25,14 @@ public class BoardController {
     }
 
     @PostMapping("/insert")
-    public String insertPost(Board board) {
-        service.insert(board);
+    public String insertPost(Board board, Authentication authentication) {
+        System.out.println("board = " + board);
+        System.out.println("authentication = " + authentication);
+        service.insert(board, authentication);
         return "redirect:/";
     }
 
-    // 게시글 조회
+    // home, 게시글 조회
     @GetMapping("/")
     public String view(@RequestParam(defaultValue = "1", value = "page") Integer page, Model model) {
         model.addAllAttributes(service.list(page));
@@ -40,6 +42,7 @@ public class BoardController {
     // 해당 아이디 게시글 조회
     @GetMapping("/board/view")
     public String viewId(@RequestParam(value = "id") Integer id, Model model) {
+        System.out.println("id = " + id);
         model.addAttribute("board", service.get(id));
         return "board/view";
     }

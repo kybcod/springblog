@@ -55,22 +55,22 @@
                 <ul class="pagination justify-content-center">
 
                     <c:if test="${pageInfo.currentPage > 1}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="1"/>
-                        </c:url>
                         <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
+                            <c:url value="/" var="fistPageLink">
+                                <c:param name="page" value="1"/>
+                            </c:url>
+                            <a class="page-link" href="${fistPageLink}">
                                 <span aria-hidden="true">&laquo;&laquo;</span>
                             </a>
                         </li>
                     </c:if>
 
                     <c:if test="${pageInfo.prevPage > 0}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.prevPage}"/>
-                        </c:url>
                         <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
+                            <c:url value="/" var="prevPageLink">
+                                <c:param name="page" value="${pageInfo.prevPage}"/>
+                            </c:url>
+                            <a class="page-link" href="${prevPageLink}">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -87,22 +87,22 @@
                     </c:forEach>
 
                     <c:if test="${pageInfo.nextPage < pageInfo.lastPage}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.nextPage}"/>
-                        </c:url>
                         <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
+                            <c:url value="/" var="nextPageNumber">
+                                <c:param name="page" value="${pageInfo.nextPage}"/>
+                            </c:url>
+                            <a class="page-link" href="${nextPageNumber}">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </c:if>
 
                     <c:if test="${pageInfo.currentPage < pageInfo.lastPage}">
-                        <c:url value="/" var="pageLink">
-                            <c:param name="page" value="${pageInfo.lastPage}"/>
-                        </c:url>
                         <li class="page-item">
-                            <a class="page-link" href="${pageLink}">
+                            <c:url value="/" var="lastPageLink">
+                                <c:param name="page" value="${pageInfo.lastPage}"/>
+                            </c:url>
+                            <a class="page-link" href="${lastPageLink}">
                                 <span aria-hidden="true">&raquo;&raquo;</span>
                             </a>
                         </li>

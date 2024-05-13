@@ -24,8 +24,22 @@ CREATE TABLE board
 
 SELECT *
 FROM board
-ORDER BY id DESC;
+ORDER BY id desc;
 
+DELETE
+FROM board
+where id = 1466;
+
+
+
+SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id
+FROM board b
+         JOIN member m
+              ON b.member_id = m.id
+WHERE b.id = 1476;
+
+SELECT COUNT(*)
+FROM board;
 
 ALTER TABLE board
     ADD COLUMN member_id INT REFERENCES member (id);

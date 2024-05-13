@@ -24,7 +24,6 @@ public class BoardService {
         if (principal instanceof CustomOauth2MemberDetails user) {
             board.setMemberId(user.getMember().getId());
             mapper.insert(board);
-
         }
 
     }

@@ -26,8 +26,6 @@ public class BoardController {
 
     @PostMapping("/insert")
     public String insertPost(Board board, Authentication authentication) {
-        System.out.println("board = " + board);
-        System.out.println("authentication = " + authentication);
         service.insert(board, authentication);
         return "redirect:/";
     }
@@ -47,6 +45,7 @@ public class BoardController {
         return "board/view";
     }
 
+    // 찾기
     //  /board/search?title=aaa
     @GetMapping("/board/search")
     public String search(@RequestParam(value = "title") String title, Model model) {

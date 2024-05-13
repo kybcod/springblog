@@ -11,7 +11,8 @@ CREATE TABLE member
 );
 
 select *
-FROM member;
+FROM member
+order by id DESC;
 
 CREATE TABLE board
 (

@@ -39,7 +39,7 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
             System.out.println(response);
         } else if (platform.equals("kakao")) {
             System.out.println("카카오 로그인 요청");
-            response = new KakaoMemberInfo((Map) oAuth2User.getAttributes()); //카카오에 있는 사용자 정보 추출
+            response = new KakaoMemberInfo((Map) oAuth2User.getAttributes());//카카오에 있는 사용자 정보 추출
             System.out.println(response);
         }
 

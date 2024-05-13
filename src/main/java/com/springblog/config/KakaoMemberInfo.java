@@ -1,13 +1,20 @@
 package com.springblog.config;
 
 import com.springblog.domain.OAuth2MemberInfo;
-import lombok.AllArgsConstructor;
 
 import java.util.Map;
 
-@AllArgsConstructor
+
 public class KakaoMemberInfo implements OAuth2MemberInfo {
+    private final Map<String, Object> kakaoAccountAttributes;
+    private final Map<String, Object> profileAttributes;
     private Map<String, Object> attributes;
+
+    public KakaoMemberInfo(Map<String, Object> attributes) {
+        this.attributes = attributes;
+        this.kakaoAccountAttributes = (Map<String, Object>) attributes.get("kakao_account");
+        this.profileAttributes = (Map<String, Object>) attributes.get("profile");
+    }
 
     @Override
     public String getEmail() {

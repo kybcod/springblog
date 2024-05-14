@@ -9,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -53,12 +52,35 @@ public class BoardService {
         );
     }
 
-    public Board get(Integer id) {
-        return mapper.selectById(id);
+
+    public Map<String, Object> titleList(String title, Integer page) {
+        title = (title == null) ? "" : title;
+        int offset = (page - 1) * 10;
+        int totalTitleBoard = mapper.countTitleAll(); // 전체 게시물
+        int lastPage = (totalTitleBoard - 1) / 10 + 1;
+
+        int endPage = ((page - 1) / 10 + 1) * 10;
+        int beginPage = endPage - 9;
+        endPage = Math.min(endPage, lastPage);
+
+        int prevPage = beginPage - 10;
+        int nextPage = beginPage + 10;
+
+        int currentPage = page;
+
+        return Map.of("searchTitle", mapper.selectByTitle(title, offset),
+                "pageInfo", Map.of("lastPage", lastPage,
+                        "endPage", endPage,
+                        "beginPage", beginPage,
+                        "prevPage", prevPage,
+                        "nextPage", nextPage,
+                        "currentPage", currentPage,
+                        "totalBoard", totalTitleBoard)
+        );
     }
 
-    public List<Board> getByTitle(String title) {
-        return mapper.selectByTitle(title);
+    public Board get(Integer id) {
+        return mapper.selectById(id);
     }
 
     public void update(Board board) {
@@ -81,5 +103,6 @@ public class BoardService {
         }
         return false;
     }
+
 
 }

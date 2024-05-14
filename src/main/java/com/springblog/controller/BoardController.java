@@ -48,8 +48,12 @@ public class BoardController {
     // 찾기
     //  /board/search?title=aaa
     @GetMapping("/board/search")
-    public String search(@RequestParam(value = "title") String title, Model model) {
-        model.addAttribute("searchTitle", service.getByTitle(title));
+    public String search(@RequestParam(value = "title") String title,
+                         @RequestParam(defaultValue = "1", value = "page") Integer page,
+                         Model model) {
+        System.out.println("title = " + title);
+        System.out.println("page = " + page);
+        model.addAllAttributes(service.titleList(title, page));
         return "board/search";
     }
 

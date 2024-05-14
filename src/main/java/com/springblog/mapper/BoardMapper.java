@@ -27,11 +27,22 @@ public interface BoardMapper {
 
     @Select("""
             <script>
-                <bind name="keyword" value="'%' + title + '%'" />
-                SELECT * FROM board WHERE title LIKE #{keyword}
+                <bind name="keyword" value="'%' + b.title + '%'" />
+                SELECT b.id, b.title, m.nick_name writer
+                FROM board b JOIN member m ON b.member_id = m.id
+                WHERE b.title LIKE #{keyword}
+                ORDER BY b.id DESC LIMIT #{offset}, 10
             </script>
             """)
-    List<Board> selectByTitle(String title);
+    List<Board> selectByTitle(String title, Integer offset);
+
+    @Select("""
+            <script>
+                <bind name="keyword" value="'%' + title + '%'" />
+                SELECT COUNT(*) FROM board WHERE title LIKE #{keyword}
+            </script>
+            """)
+    int countTitleAll();
 
     @Update("""
             UPDATE board

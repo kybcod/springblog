@@ -109,14 +109,21 @@
                     </c:if>
                 </ul>
             </nav>
+
         </div>
     </div>
+</div>
 
-    <form action="/board/search">
-        <input type="search" name="title" id="search" placeholder="검색어를 입력해주세요.">
-        <button>검색</button>
-    </form>
-
+<div class="container" style="font-family: 'TTHakgyoansimUndongjangL'">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <h3 class="mb-4"></h3>
+            <form action="/board/search">
+                <input type="search" name="title" id="search" placeholder="제목을 입력해주세요.">
+                <button>검색</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"

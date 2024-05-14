@@ -31,6 +31,9 @@ DELETE
 FROM board
 where id = 1466;
 
+SELECT COUNT(*)
+FROM board
+WHERE title LIKE '%123%';
 
 
 SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id

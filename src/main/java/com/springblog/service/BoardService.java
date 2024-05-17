@@ -69,7 +69,7 @@ public class BoardService {
         int currentPage = page;
 
         return Map.of("searchTitle", mapper.selectByTitle(title, offset),
-                "pageInfo", Map.of("lastPage", lastPage,
+                "titlePageInfo", Map.of("lastPage", lastPage,
                         "endPage", endPage,
                         "beginPage", beginPage,
                         "prevPage", prevPage,

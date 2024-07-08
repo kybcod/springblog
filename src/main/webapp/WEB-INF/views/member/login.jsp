@@ -41,12 +41,13 @@
                 </div>
                 <div>
                     <a href="/oauth2/authorization/naver">
-                        <img src="https://i.namu.wiki/i/wC4Xv_cwLVa_AT5XLk0Ma6Wuog1jFLfsGXI3h120K2UHnW9iKG2O50vfs5BlmN0xGrYpmJGCWFAnoxozTpgBVSS0sJKRphiQjuLqpjLCC-oKBKKqbn_sDRyH6lcRhcFKabiHokaKNDlqPpovYc0jpA.svg"
+                        <img src="https://i.namu.wiki/i/p_1IEyQ8rYenO9YgAFp_LHIAW46kn6DXT0VKmZ_jKNijvYth9DieYZuJX_E_H_4GkCER_sVKhMqSyQYoW94JKA.svg"
                              width="50px" height="50px"
                              alt="네이버 로그인">
                     </a>
                     <a href="/oauth2/authorization/kakao">
-                        <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png">
+                        <img width="50px" height="50px"
+                             src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg">
                     </a>
                 </div>
             </form>

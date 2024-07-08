@@ -10,9 +10,11 @@ CREATE TABLE member
     inserted  DATETIME     NOT NULL DEFAULT NOW()
 );
 
+USE prj1;
 select *
 FROM member
 order by id DESC;
+
 
 CREATE TABLE board
 (
@@ -35,6 +37,7 @@ SELECT COUNT(*)
 FROM board
 WHERE title LIKE '%123%';
 
+show index from PRJ1.member;
 
 SELECT b.id, b.title, b.content, b.inserted, m.nick_name writer, m.id member_id
 FROM board b

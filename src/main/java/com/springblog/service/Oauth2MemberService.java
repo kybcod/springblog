@@ -45,7 +45,6 @@ public class Oauth2MemberService extends DefaultOAuth2UserService {
 
         // DB에 저장
         Member member = mapper.selectByEmail(response.getEmail());
-        System.out.println("member.toString() = " + member.toString());
         if (member == null) {
             member = Member
                     .builder()

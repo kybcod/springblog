@@ -54,7 +54,7 @@ public class BoardService {
 
 
     public Map<String, Object> titleList(String title, Integer page) {
-        title = (title == null) ? "" : title;
+        title = (title == null) ? "" : title; //title null 값 처리
         int offset = (page - 1) * 10;
         int totalTitleBoard = mapper.countTitleAll(); // 전체 게시물
         int lastPage = (totalTitleBoard - 1) / 10 + 1;
@@ -69,7 +69,7 @@ public class BoardService {
         int currentPage = page;
 
         return Map.of("searchTitle", mapper.selectByTitle(title, offset),
-                "pageInfo", Map.of("lastPage", lastPage,
+                "titlePageInfo", Map.of("lastPage", lastPage,
                         "endPage", endPage,
                         "beginPage", beginPage,
                         "prevPage", prevPage,

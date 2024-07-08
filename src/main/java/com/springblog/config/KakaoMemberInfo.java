@@ -6,14 +6,12 @@ import java.util.Map;
 
 
 public class KakaoMemberInfo implements OAuth2MemberInfo {
-    private final Map<String, Object> kakaoAccountAttributes;
-    private final Map<String, Object> profileAttributes;
     private Map<String, Object> attributes;
+    private final Map<String, Object> profileAttributes;
 
     public KakaoMemberInfo(Map<String, Object> attributes) {
-        this.attributes = attributes;
-        this.kakaoAccountAttributes = (Map<String, Object>) attributes.get("kakao_account");
-        this.profileAttributes = (Map<String, Object>) attributes.get("profile");
+        this.attributes = (Map<String, Object>) attributes.get("kakao_account");
+        this.profileAttributes = (Map<String, Object>) this.attributes.get("profile");
     }
 
     @Override
@@ -33,6 +31,6 @@ public class KakaoMemberInfo implements OAuth2MemberInfo {
 
     @Override
     public String getNickName() {
-        return (String) attributes.get("nickname");
+        return (String) profileAttributes.get("nickname");
     }
 }
